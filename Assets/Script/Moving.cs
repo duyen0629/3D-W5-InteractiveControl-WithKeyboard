@@ -22,6 +22,14 @@ public class Moving : MonoBehaviour
         if (translation != 0)
         {
             anim.SetBool("enableWalking", true);
+            if (translation < 0)
+            {
+                anim.SetFloat("playerSpeed", -1.0f);
+            }
+            else
+            {
+                anim.SetFloat("playerSpeed", 1.0f);
+            }
         }
         else
         {
