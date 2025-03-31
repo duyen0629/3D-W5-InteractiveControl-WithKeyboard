@@ -4,6 +4,12 @@ public class Moving : MonoBehaviour
 {
     float translationSpeed = 2.0f;
     float rotationSpeed = 100.0f;
+    Animator anim;
+
+    void Start()
+    {
+        anim = this.GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -12,5 +18,14 @@ public class Moving : MonoBehaviour
 
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
         transform.Rotate(0, rotation, 0);
+
+        if (translation != 0)
+        {
+            anim.SetBool("enableWalking", true);
+        }
+        else
+        {
+            anim.SetBool("enableWalking", false);
+        }
     }
 }
